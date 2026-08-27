@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#f5f6fa" />
+    <title>Юбилейный розыгрыш</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main class="campaign">
+      <div class="ticker ticker-top" aria-label="Юбилейный розыгрыш призов">
+        <div class="ticker-track">
+          <span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i><span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i>
+          <span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i><span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i>
+        </div>
+      </div>
+      <section class="campaign-content">
+        <div class="campaign-hero">
+          <img src="wb.png" alt="Wildberries — розыгрыш призов" />
+        </div>
+        <h2>Твой шанс<br /><em>выиграть</em></h2>
+        <div class="prize-grid">
+          <article class="prize-card">
+            <div class="prize-image" aria-hidden="true">💰</div>
+            <p class="prize-type">Деньги</p>
+            <h3>до 500 000 ₽</h3>
+          </article>
+          <article class="prize-card">
+            <div class="prize-image" aria-hidden="true">🏝️</div>
+            <p class="prize-type">Путёвки</p>
+            <h3>отдых на море</h3>
+          </article>
+          <article class="prize-card">
+            <div class="prize-image" aria-hidden="true">💻</div>
+            <p class="prize-type">Техника</p>
+            <h3>ноуты, ТВ</h3>
+          </article>
+          <article class="prize-card">
+            <div class="prize-image" aria-hidden="true">📱</div>
+            <p class="prize-type">Гаджеты</p>
+            <h3>смартфоны</h3>
+          </article>
+        </div>
+        <section id="survey-card" class="survey-card" aria-live="polite">
+          <div class="survey-heading">
+            <div class="survey-emoji" aria-hidden="true">🎁</div>
+            <div>
+              <p class="survey-step">Вопрос <strong id="survey-count">1/5</strong></p>
+              <h3 id="survey-question">Как часто вы совершаете покупки на Wildberries?</h3>
+            </div>
+          </div>
+          <div id="survey-options" class="survey-options">
+            <button class="survey-option" type="button"><span>Ежедневно</span><i aria-hidden="true">✓</i></button>
+            <button class="survey-option" type="button"><span>Раз в неделю</span><i aria-hidden="true">✓</i></button>
+            <button class="survey-option" type="button"><span>Редко</span><i aria-hidden="true">✓</i></button>
+          </div>
+        </section>
+        <p class="survey-note">Принять участие в розыгрыше можно только 1 раз!</p>
+        <section id="public-chat" class="public-chat" aria-labelledby="public-chat-title">
+          <header class="public-chat-header">
+            <div class="public-chat-brand">
+              <span class="public-chat-online" aria-hidden="true"></span>
+              <span class="public-chat-title" id="public-chat-title">Online чат</span>
+            </div>
+            <span class="public-chat-mode">тестовая аудитория · 1125</span>
+          </header>
+          <div id="public-chat-messages" class="public-chat-messages" aria-live="polite"></div>
+          <form id="public-chat-composer" class="public-chat-composer">
+            <input id="public-chat-input" class="public-chat-input" type="text" maxlength="300" autocomplete="off" placeholder="Написать сообщение…" aria-label="Сообщение" />
+            <button id="public-chat-send" class="public-chat-send" type="submit" aria-label="Отправить сообщение">➤</button>
+          </form>
+        </section>
+      </section>
+      <div class="ticker ticker-bottom" aria-hidden="true">
+        <div class="ticker-track">
+          <span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i><span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i>
+          <span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i><span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i>
+        </div>
+      </div>
+      <footer class="campaign-footer">© 2026. Сайт официальной промо-акции</footer>
+    </main>
+    <div id="final-modal" class="final-modal" hidden>
+      <section class="result-modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <h2 id="result-title">Спасибо за ваши ответы!</h2>
+        <p class="result-lead">Теперь вы можете принять участие в юбилейном розыгрыше призов от Wildberries!</p>
+        <img class="gift-image" src="gift.webp" alt="Подарочная коробка" />
+        <div class="result-info">
+          <p>Мы разыгрываем сотни гаджетов, бытовую технику, путёвки на отдых и щедрые денежные призы!</p>
+          <p>Чтобы выиграть свой приз, нажмите на кнопку ниже</p>
+        </div>
+        <button id="participate-button" class="participate-button" type="button">УЧАВСТВОВАТЬ</button>
+      </section>
+    </div>
+    <script src="state.js"></script>
+    <script src="public-chat.js"></script>
+    <script src="campaign.js"></script>
+  </body>
+</html>

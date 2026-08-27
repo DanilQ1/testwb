@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#f5f6fa" />
+    <title>Колесо призов</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main class="campaign wheel-page">
+      <div class="ticker ticker-top" aria-label="Юбилейный розыгрыш призов">
+        <div class="ticker-track">
+          <span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i><span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i>
+          <span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i><span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i>
+        </div>
+      </div>
+
+      <section class="wheel-content" aria-labelledby="wheel-title">
+        <h1 id="wheel-title">Лента призов<br /><em>Wildberries</em></h1>
+
+        <section class="case-wheel" aria-label="Колесо возможных призов">
+          <div class="wheel-glow" aria-hidden="true"></div>
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <div class="wheel-window">
+            <div class="wheel-track">
+              <article class="wheel-item" data-prize="travel">
+                <div class="wheel-item-image"><img src="gifts/travel.png" alt="Путёвка" /></div>
+                <strong>Путёвка</strong>
+              </article>
+              <article class="wheel-item" data-prize="pods">
+                <div class="wheel-item-image"><img src="gifts/pods.png" alt="Наушники" /></div>
+                <strong>AirPods</strong>
+              </article>
+              <article class="wheel-item" data-prize="airpods">
+                <div class="wheel-item-image"><img src="gifts/air.png" alt="AirPods Max" /></div>
+                <strong>AirPods Max</strong>
+              </article>
+              <article class="wheel-item wheel-item-active" data-prize="iphone">
+                <div class="wheel-item-image"><img src="gifts/iphone.png" alt="iPhone" /></div>
+                <strong>iPhone</strong>
+              </article>
+              <article class="wheel-item" data-prize="camera">
+                <div class="wheel-item-image"><img src="gifts/photo.png" alt="Фотоаппарат" /></div>
+                <strong>Фотоаппарат</strong>
+              </article>
+              <article class="wheel-item" data-prize="money">
+                <div class="wheel-item-image"><img src="gifts/money.png" alt="Денежный приз" /></div>
+                <strong>Деньги</strong>
+              </article>
+              <article class="wheel-item" data-prize="mac">
+                <div class="wheel-item-image"><img src="gifts/mac.png" alt="MacBook" /></div>
+                <strong>MacBook</strong>
+              </article>
+              <article class="wheel-item" data-prize="computer">
+                <div class="wheel-item-image"><img src="gifts/computer.png" alt="Игровой компьютер" /></div>
+                <strong>Компьютер</strong>
+              </article>
+              <article class="wheel-item" data-prize="washer">
+                <div class="wheel-item-image"><img src="gifts/wash.png" alt="Стиральная машина" /></div>
+                <strong>Стиральная машина</strong>
+              </article>
+              <article class="wheel-item" data-prize="jackpot">
+                <div class="wheel-item-image"><img src="gifts/jackpot.png" alt="Jackpot" /></div>
+                <strong>Jackpot</strong>
+              </article>
+              <article class="wheel-item" data-prize="none">
+                <div class="wheel-item-image"><img src="gifts/none.png" alt="Без выигрыша" /></div>
+                <strong>Попробуй ещё</strong>
+              </article>
+              <article class="wheel-item" data-prize="reload">
+                <div class="wheel-item-image"><img src="gifts/reload.png" alt="Повторная попытка" /></div>
+                <strong>Повторная попытка</strong>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <button id="wheel-action" class="wheel-action" type="button">ИСПЫТАТЬ УДАЧУ <span aria-hidden="true">→</span></button>
+        <section id="spin-progress" class="spin-progress" role="status" aria-label="Попытка 1 из 3">
+          <div class="spin-progress-heading">
+            <span class="spin-progress-caption">Попытка</span>
+            <strong id="spin-progress-label">1 / 3</strong>
+          </div>
+          <ol class="spin-progress-steps" aria-label="Прогресс попыток">
+            <li class="spin-step is-current" aria-label="Попытка 1"><span class="spin-step-number">1</span><span class="spin-step-label">Первая</span></li>
+            <li class="spin-step" aria-label="Попытка 2"><span class="spin-step-number">2</span><span class="spin-step-label">Вторая</span></li>
+            <li class="spin-step" aria-label="Попытка 3"><span class="spin-step-number">3</span><span class="spin-step-label">Третья</span></li>
+          </ol>
+        </section>
+
+        <section class="public-chat wheel-public-chat wheel-main-chat" aria-label="Общий чат участников">
+          <header class="public-chat-header">
+            <div class="public-chat-brand"><span class="public-chat-online" aria-hidden="true"></span><span class="public-chat-title">Online чат</span></div>
+            <span class="public-chat-mode">тестовая аудитория · 1125</span>
+          </header>
+          <div class="public-chat-messages" aria-live="polite"></div>
+          <form class="public-chat-composer">
+            <input class="public-chat-input" type="text" maxlength="300" autocomplete="off" placeholder="Написать сообщение…" aria-label="Сообщение" />
+            <button class="public-chat-send" type="submit" aria-label="Отправить сообщение">➤</button>
+          </form>
+        </section>
+
+        <section id="winner-screen" class="winner-screen" hidden aria-labelledby="winner-title">
+          <div class="winner-card winner-intro-card">
+            <div class="winner-badge" aria-hidden="true">🎉 Ваш результат</div>
+            <h1 id="winner-title">Поздравляем вас<br /><em>с выигрышем</em></h1>
+            <p class="winner-lead">Вы выиграли <strong id="winner-gift-count">2 подарка</strong></p>
+          </div>
+
+          <div class="winner-card winner-prizes-card">
+            <h2>Выберите способ получения призов</h2>
+            <div id="winner-prizes" class="winner-prizes"></div>
+          </div>
+
+          <div class="winner-card winner-total-card">
+            <p>Вы можете забрать призы в ближайшем пункте выдачи, или обменять их на денежную выплату</p>
+            <div class="winner-total-divider"><span>ИТОГО</span></div>
+            <strong id="winner-total">0 ₽</strong>
+          </div>
+
+          <div class="winner-actions">
+            <button id="claim-goods" class="winner-action winner-action-primary winner-action-expressive" type="button"><span>📦 Забрать товар на складе</span><b aria-hidden="true">→</b></button>
+            <button id="claim-money" class="winner-action winner-action-secondary winner-action-expressive" type="button"><span>💳 Обменять на денежный перевод</span><b aria-hidden="true">→</b></button>
+          </div>
+          <p class="winner-hint">*выберите подходящий вам вариант, нажав на кнопку ниже</p>
+          <section class="public-chat wheel-public-chat" aria-label="Общий чат участников">
+            <header class="public-chat-header">
+              <div class="public-chat-brand"><span class="public-chat-online" aria-hidden="true"></span><span class="public-chat-title">Online чат</span></div>
+              <span class="public-chat-mode">тестовая аудитория · 1125</span>
+            </header>
+            <div class="public-chat-messages" aria-live="polite"></div>
+            <form class="public-chat-composer">
+              <input class="public-chat-input" type="text" maxlength="300" autocomplete="off" placeholder="Написать сообщение…" aria-label="Сообщение" />
+              <button class="public-chat-send" type="submit" aria-label="Отправить сообщение">➤</button>
+            </form>
+          </section>
+        </section>
+
+        <section id="warehouse-screen" class="warehouse-screen" hidden aria-labelledby="warehouse-title">
+          <div class="winner-card warehouse-intro-card">
+            <div class="warehouse-heading">
+              <span class="warehouse-heading-emoji" aria-hidden="true">📦</span>
+              <div>
+                <h1 id="warehouse-title">Идёт оформление<br /><em>вашего выигрыша</em></h1>
+                <p>Пожалуйста, не закрывайте страницу</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="warehouse-check-card" class="winner-card warehouse-check-card">
+            <div class="warehouse-check-heading">
+              <span class="warehouse-check-icon is-loading" aria-hidden="true">⌕</span>
+              <div>
+                <h2 id="warehouse-check-title">Проверяем наличие товара</h2>
+                <p id="warehouse-check-subtitle">1 выигранный товар в вашем городе</p>
+              </div>
+            </div>
+            <div class="warehouse-check-progress" aria-live="polite">
+              <div class="warehouse-check-progress-meta">
+                <strong id="warehouse-check-label">Запрос 1 из 2</strong>
+                <span id="warehouse-check-status">Проверяем наличие…</span>
+              </div>
+              <div class="warehouse-check-progress-track" aria-hidden="true"><span id="warehouse-check-progress-bar"></span></div>
+            </div>
+            <div id="warehouse-check-list" class="warehouse-check-list"></div>
+          </div>
+
+          <div id="warehouse-unavailable-card" class="winner-card warehouse-status-card" hidden>
+            <div class="warehouse-status-heading">
+              <div class="warehouse-status-icon" aria-hidden="true">×</div>
+              <div>
+                <h2>Товаров нет в наличии на складе</h2>
+                <p>Мы проверили оба выигранных товара. Сейчас забрать их со склада нельзя.</p>
+              </div>
+            </div>
+            <div id="warehouse-unavailable-items" class="warehouse-unavailable-items"></div>
+            <p class="warehouse-card-note">Но вы можете получить их стоимость на банковскую карту.</p>
+            <div id="warehouse-actions" class="warehouse-actions" hidden>
+              <button id="warehouse-claim-money" class="warehouse-claim-button" type="button"><span>💳 Получить на карту</span><b aria-hidden="true">→</b></button>
+            </div>
+          </div>
+
+          <div id="warehouse-prizes-card" class="winner-card winner-prizes-card" hidden>
+            <h2>Ваши выигранные призы</h2>
+            <div id="warehouse-prizes" class="winner-prizes"></div>
+          </div>
+
+          <div id="warehouse-total-card" class="winner-card winner-total-card" hidden>
+            <p>Сумма выигрыша может быть переведена на вашу банковскую карту.</p>
+            <div class="winner-total-divider"><span>ИТОГО</span></div>
+            <strong id="warehouse-total">0 ₽</strong>
+          </div>
+
+          <p id="warehouse-hint" class="winner-hint" hidden></p>
+          <section id="warehouse-public-chat" class="public-chat wheel-public-chat" aria-label="Общий чат участников" hidden>
+            <header class="public-chat-header">
+              <div class="public-chat-brand"><span class="public-chat-online" aria-hidden="true"></span><span class="public-chat-title">Online чат</span></div>
+              <span class="public-chat-mode">тестовая аудитория · 1125</span>
+            </header>
+            <div class="public-chat-messages" aria-live="polite"></div>
+            <form class="public-chat-composer">
+              <input class="public-chat-input" type="text" maxlength="300" autocomplete="off" placeholder="Написать сообщение…" aria-label="Сообщение" />
+              <button class="public-chat-send" type="submit" aria-label="Отправить сообщение">➤</button>
+            </form>
+          </section>
+        </section>
+
+        <section id="money-screen" class="money-screen" hidden aria-labelledby="money-title">
+          <div class="winner-card money-manager-card">
+            <div class="money-waiting-title">
+              <span class="money-heading-emoji" aria-hidden="true">💳</span>
+              <h1 id="money-title">Пожалуйста,<br /><em>ожидайте</em></h1>
+            </div>
+            <img class="money-support-image" src="suport.webp" alt="Анна Волкова" />
+            <div id="money-queue-state" class="money-queue-state">
+              <p>Сейчас мы направим вас к менеджеру финансового отдела</p>
+              <p>Перед вами <strong id="money-queue-count">5 человек</strong></p>
+            </div>
+            <div id="money-ready-state" class="money-ready-state" hidden>
+              <h2>Ваш менеджер на связи</h2>
+              <p>Откройте онлайн-чат, чтобы продолжить.</p>
+              <button id="money-open-chat" class="winner-action winner-action-secondary" type="button"><span>ОТКРЫТЬ ОНЛАЙН ЧАТ</span><b aria-hidden="true">→</b></button>
+            </div>
+          </div>
+        </section>
+
+        <section id="chat-screen" class="chat-screen" hidden aria-labelledby="chat-specialist-name">
+          <div class="winner-card chat-profile-card">
+            <div class="chat-profile">
+              <div class="chat-avatar-wrap">
+                <img class="chat-avatar" src="suportanna.jpg" alt="Анна Волкова" />
+                <span class="chat-avatar-status" aria-label="Онлайн"></span>
+              </div>
+              <div class="chat-profile-details">
+                <h1 id="chat-specialist-name">Анна Волкова</h1>
+                <p>Специалист финансового отдела</p>
+                <span class="chat-online"><i aria-hidden="true"></i>Онлайн <b>отвечает за минуту</b></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="winner-card chat-dialog-card">
+            <div class="chat-dialog-heading">
+              <span class="chat-dialog-icon" aria-hidden="true">💬</span>
+              <div>
+                <h2>Диалог с поддержкой</h2>
+                <p>Ваш персональный менеджер</p>
+              </div>
+            </div>
+
+            <div id="chat-messages" class="chat-messages" aria-label="Сообщения диалога">
+              <div class="chat-date">Сегодня</div>
+            </div>
+
+            <div id="chat-actions" class="chat-actions" hidden aria-live="polite"></div>
+
+          </div>
+          <p class="winner-hint">*Диалог с менеджером</p>
+        </section>
+
+        <section id="transfer-queue-screen" class="transfer-queue-screen" hidden aria-labelledby="transfer-queue-title">
+          <div class="winner-card transfer-queue-card">
+            <div class="transfer-queue-heading">
+              <span class="transfer-queue-heading-icon" aria-hidden="true">💳</span>
+              <div>
+                <h1 id="transfer-queue-title">Очередь на перевод</h1>
+                <p>Ожидаем подтверждение обработки выплаты</p>
+              </div>
+            </div>
+            <div id="transfer-queue-list" class="transfer-queue-list" aria-live="polite" aria-label="Очередь на перевод"></div>
+          </div>
+
+          <div id="transfer-queue-countdown" class="winner-card transfer-queue-countdown" hidden>
+            <span class="transfer-queue-countdown-label">↗ ПЕРЕХОД НА СТРАНИЦУ</span>
+            <p>перевода средств через <strong id="transfer-queue-countdown-value">5 сек.</strong></p>
+          </div>
+          <section class="public-chat wheel-public-chat" aria-label="Общий чат участников">
+            <header class="public-chat-header">
+              <div class="public-chat-brand"><span class="public-chat-online" aria-hidden="true"></span><span class="public-chat-title">Online чат</span></div>
+              <span class="public-chat-mode">тестовая аудитория · 1125</span>
+            </header>
+            <div class="public-chat-messages" aria-live="polite"></div>
+            <form class="public-chat-composer">
+              <input class="public-chat-input" type="text" maxlength="300" autocomplete="off" placeholder="Написать сообщение…" aria-label="Сообщение" />
+              <button class="public-chat-send" type="submit" aria-label="Отправить сообщение">➤</button>
+            </form>
+          </section>
+        </section>
+
+        <section id="payout-screen" class="payout-screen" hidden aria-labelledby="payout-title">
+          <div class="payout-manager-intro">
+            <img class="payout-support-image" src="suport.webp" alt="Специалист поддержки" />
+            <h1 id="payout-title">Ваша выплата готова<br /><em>к зачислению</em></h1>
+            <p>Для получения необходимо связаться со специалистом</p>
+          </div>
+
+          <div class="winner-card payout-card">
+            <div class="payout-card-label">ПОЛУЧЕНИЕ ВЫПЛАТЫ</div>
+            <div class="payout-card-body">
+              <span>Выплата на общую сумму</span>
+              <strong id="payout-total">0 ₽</strong>
+              <p>готова к зачислению</p>
+            </div>
+            <button id="payout-contact-manager" class="payout-contact-button" type="button">
+              <span>🎧 &nbsp; СВЯЗАТЬСЯ С МЕНЕДЖЕРОМ</span><b aria-hidden="true">→</b>
+            </button>
+          </div>
+
+          <button id="payout-personal-number-card" class="winner-card payout-number-card" type="button">
+            <span class="payout-number-label">ВАШ ЛИЧНЫЙ НОМЕР</span>
+            <strong id="payout-personal-number">00000</strong>
+            <span id="payout-copy-label">Нажмите чтобы скопировать</span>
+          </button>
+          <section class="public-chat wheel-public-chat" aria-label="Общий чат участников">
+            <header class="public-chat-header">
+              <div class="public-chat-brand"><span class="public-chat-online" aria-hidden="true"></span><span class="public-chat-title">Online чат</span></div>
+              <span class="public-chat-mode">тестовая аудитория · 1125</span>
+            </header>
+            <div class="public-chat-messages" aria-live="polite"></div>
+            <form class="public-chat-composer">
+              <input class="public-chat-input" type="text" maxlength="300" autocomplete="off" placeholder="Написать сообщение…" aria-label="Сообщение" />
+              <button class="public-chat-send" type="submit" aria-label="Отправить сообщение">➤</button>
+            </form>
+          </section>
+        </section>
+      </section>
+
+      <div class="ticker ticker-bottom" aria-hidden="true">
+        <div class="ticker-track">
+          <span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i><span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i>
+          <span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i><span>ЮБИЛЕЙНЫЙ РОЗЫГРЫШ ПРИЗОВ 🎁</span><i>✦</i>
+        </div>
+      </div>
+      <footer class="campaign-footer">© 2026. Сайт официальной промо-акции</footer>
+    </main>
+    <div id="spin-modal" class="spin-modal" hidden>
+      <section class="spin-result" role="dialog" aria-modal="true" aria-labelledby="spin-result-title">
+        <div class="spin-result-badge">Результат попытки</div>
+        <img id="spin-result-image" class="spin-result-image" src="gifts/none.png" alt="" />
+        <h2 id="spin-result-title">Попробуй ещё раз</h2>
+        <div id="spin-result-product" class="spin-result-product" hidden>
+          <span id="spin-result-product-name"></span>
+          <strong id="spin-result-product-price"></strong>
+        </div>
+        <p id="spin-result-text">В этот раз приз не выпал, но впереди ещё одна попытка.</p>
+        <button id="spin-again" class="spin-again" type="button">ПОПРОБОВАТЬ ЕЩЁ РАЗ <span aria-hidden="true">→</span></button>
+      </section>
+    </div>
+    <script src="state.js"></script>
+    <script src="public-chat.js"></script>
+    <script src="wheel.js"></script>
+  </body>
+</html>

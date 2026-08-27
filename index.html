@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#f5f6fa" />
+    <title>Розыгрыш WB</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main class="welcome">
+      <div class="brand" aria-label="Розыгрыш WB">
+        <span class="brand-mark">WB</span>
+        <span class="brand-name">розыгрыш</span>
+      </div>
+      <section class="card" aria-labelledby="welcome-title">
+        <div class="sparkle" aria-hidden="true">✦</div>
+        <p class="eyebrow">Добро пожаловать</p>
+        <h1 id="welcome-title">Как тебя<br /><span>называть?</span></h1>
+        <p class="description">Введите ваше имя</p>
+        <label class="name-label" for="display-name">Твоё имя</label>
+        <div class="name-field">
+          <input id="display-name" type="text" autocomplete="name" maxlength="32" />
+        </div>
+        <p class="hint">Ваше имя</p>
+        <button id="accept-button" class="accept-button" type="button">Применить <span aria-hidden="true">→</span></button>
+      </section>
+    </main>
+    <script src="state.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
